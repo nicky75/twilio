@@ -1,0 +1,47 @@
+<div class="row cart-and-ipay">
+    <div class="col-sm-12">
+        
+        <div id="addToCartDiv" <isif condition="${!product.available}">class="d-none"</isif>>
+            <input type="hidden" class="add-to-cart-url" value="${pdict.addToCartUrl}">
+            <button class="add-to-cart btn btn-primary"
+                    data-toggle="modal" data-target="#chooseBonusProductModal"
+                    data-pid="${product.id}"
+                    ${!product.readyToOrder ? "disabled" : ""}>
+                <i class="fa fa-shopping-bag"></i>
+                ${Resource.msg('button.addtocart', 'common', null)}
+            </button>
+        </div>
+        <div id="addToNotifyDiv" <isif condition="${product.available}">class="d-none"</isif>>
+            <div class="row">
+                <div class="col">
+                    <isif condition="${!empty(pdict.contentHeader) && pdict.contentHeader.online}">
+                        <p class="twillioResponse"><isprint value="${pdict.contentHeader.custom.body.markup}" encoding="off" /></p>
+                    </isif>
+                </div>
+            </div>
+             <div class="row">
+                <div class="col">
+                    <form action="${URLUtils.url('Twilio-Create')}" class="create-notification" method="POST" <isprint value="${pdict.notifyForm.attributes}" encoding="off" />>
+                        <input type="hidden" id="messageSuccess" value="${Resource.msg('success.message.subscribe.send', 'forms', null)}"/>
+                        <input type="hidden" id="messageFail" value="${Resource.msg('error.message.subscribe.send', 'forms', null)}"/>
+                        <input type="hidden" id="pid" value="${product.id}" <isprint value="${pdict.notifyForm.twilio.pid.attributes}" encoding="off" />/>
+                        <div class="input-group form-group mb-3">
+                            
+                            <input value="${pdict.phone}" data-pattern-mismatch="${Resource.msg('error.message.parse.phone.profile.form','forms',null)}" data-missing-error="${Resource.msg('error.message.required','forms',null)}" class="form-control" id="phone" placeholder="${pdict.notifyForm.twilio.phone.label}"
+                                <isprint value="${pdict.notifyForm.twilio.phone.attributes}" encoding="off" />/>
+                            <div class="input-group-append">
+                                <button type="submit" class="add-to-notify btn btn-primary">
+                                    <i class="fa fa-bell"></i>
+                                    ${Resource.msg('button.notifyMe', 'forms', null)}
+                                </button>
+                            </div>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+        <isinclude template="product/components/addToCartButtonExtension"/>
+    </div>
+</div>

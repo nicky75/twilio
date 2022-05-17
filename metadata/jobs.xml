@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jobs xmlns="http://www.demandware.com/xml/impex/jobs/2015-07-01">
+    <job job-id="availabilityNotificationJob" priority="0">
+        <description>Send SMS using Twilio when a product becomes available using custom obejct</description>
+        <parameters/>
+        <flow>
+            <context site-id="RefArch"/>
+            <step step-id="availabilityNotificationStep" type="custom.twillioNotificationJon" enforce-restart="false">
+                <description>Sends SMS</description>
+                <parameters/>
+            </step>
+        </flow>
+        <rules/>
+        <triggers>
+            <run-once enabled="true">
+                <date>2022-05-14Z</date>
+                <time>08:08:31.000Z</time>
+            </run-once>
+        </triggers>
+    </job>
+</jobs>

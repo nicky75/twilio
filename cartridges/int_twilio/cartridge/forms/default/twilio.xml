@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19" secure="false">
+	<group formid="twilio">
+		<field
+			formid="phone"
+			label="label.input.phone"
+			mandatory="true"
+			regexp="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
+			missing-error="error.message.required"
+			parse-error="error.message.parse.phone.profile.form"
+			type="string"/>
+		<field
+			formid="pid"
+			mandatory="true"
+			type="string"/>
+	</group>
+</form>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns="http://www.demandware.com/xml/impex/services/2014-09-26">
+    <service-credential service-credential-id="twilio.http.sms">
+        <url>https://api.twilio.com/2010-04-01/Accounts/ACc32673d5adab1a057aaee8031ad7768f/Messages.json</url>
+        <user-id>ACc32673d5adab1a057aaee8031ad7768f</user-id>
+        <password encrypted="true" encryption-type="common.export">c4t9zVx+BIZ2fxPdFHvtRNtrbqlyfYEi7qjgkP+Jpni+623bP933P2FRYlsjK9/Uv6LKxOC6Zqkc150kyhv1bQ==</password>
+    </service-credential>
+    <service-profile service-profile-id="twilio.http.sms">
+        <timeout-millis>1000</timeout-millis>
+        <rate-limit-enabled>false</rate-limit-enabled>
+        <rate-limit-calls>0</rate-limit-calls>
+        <rate-limit-millis>0</rate-limit-millis>
+        <cb-enabled>false</cb-enabled>
+        <cb-calls>0</cb-calls>
+        <cb-millis>0</cb-millis>
+    </service-profile>
+    <service service-id="twilio.http.sms">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>twillio</log-prefix>
+        <comm-log-enabled>true</comm-log-enabled>
+        <force-prd-enabled>false</force-prd-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>twilio.http.sms</profile-id>
+        <credential-id>twilio.http.sms</credential-id>
+    </service>
+
+</services>

@@ -1,0 +1,13 @@
+{
+  "step-types":
+  {
+    "script-module-step":
+    [
+      {
+        "@type-id":"custom.twillioNotificationJon",
+        "description":"My custom script step type",
+        "module":"int_twilio/cartridge/scripts/steps/TwilioNotificationJob.js"
+      }
+    ]
+  }
+}

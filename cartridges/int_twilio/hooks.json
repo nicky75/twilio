@@ -1,0 +1,8 @@
+{
+    "hooks": [
+        {
+            "name": "dw.twilio.getNotifyUrl",
+            "script": "./cartridge/scripts/hooks/data.js"
+        }
+    ]
+}
