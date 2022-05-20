@@ -5,6 +5,7 @@ module.exports.execute = function () {
     var twilioHelper = require('*/cartridge/scripts/helpers/twilioHelpers');
     var customObjectName = 'TwillioSubscription';
     var customObjectIterator = CustomObjectMgr.getAllCustomObjects(customObjectName);
+    var ArrayList = require('dw/util/ArrayList');
 
     try {
         while (customObjectIterator.hasNext()) {
@@ -18,6 +19,12 @@ module.exports.execute = function () {
                     var response = twilioHelper.sendNotification(phone, product.name);
                     if (response.error_code) {
                         error = true;
+                    } else {
+                        var newPhones = new ArrayList(phones);
+                        newPhones.remove(phone);
+                        Transaction.wrap(function () {
+                            customObject.custom.phones = newPhones;
+                        });
                     }
                 });
                 if (!error) {
